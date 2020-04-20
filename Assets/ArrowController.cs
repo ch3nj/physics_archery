@@ -6,6 +6,7 @@ public class ArrowController : MonoBehaviour
 {
     public Vector3 arrow_velocity;
     public float gravity = 0.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +30,7 @@ public class ArrowController : MonoBehaviour
       print(gravity);
       Vector3 pos = transform.position;
       arrow_velocity.y -= gravity*0.0001f;
-      transform.rotation = Quaternion.LookRotation(new Vector3(0,0,1), new Vector3(-arrow_velocity.y, arrow_velocity.x, 0));
+      transform.rotation = Quaternion.LookRotation(Vector3.forward, new Vector3(-arrow_velocity.y, arrow_velocity.x, 0));
       pos += arrow_velocity;
       transform.position = pos;
 
