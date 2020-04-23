@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ShootArrow : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class ShootArrow : MonoBehaviour
     public float angle = 0.0f;
     public float drawDistance = 1.0f;
     public int arrowsLeft = 3;
+    public TMPro arrowsText;
     // Start is called before the first frame update
     void Start()
     {
