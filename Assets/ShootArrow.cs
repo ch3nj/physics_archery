@@ -23,7 +23,7 @@ public class ShootArrow : MonoBehaviour
       drawDistance = 1.0f;
       weight = 0.1f;
 
-      arrowsText.GetComponent<TextMeshProUGUI>().text = arrowsLeft.ToString();
+      arrowsText.GetComponent<TextMeshProUGUI>().text = "Arrows Left: " + arrowsLeft.ToString();
     }
 
     // Update is called once per frame
@@ -57,7 +57,7 @@ public class ShootArrow : MonoBehaviour
       Vector3 pos = transform.position;
       GameObject shot = Instantiate(arrow, pos, Quaternion.identity);
       arrowsLeft -= 1;
-      arrowsText.GetComponent<TextMeshProUGUI>().text = arrowsLeft.ToString();
+      arrowsText.GetComponent<TextMeshProUGUI>().text = "Arrows Left: " + arrowsLeft.ToString();
       ArrowController controller = shot.GetComponent<ArrowController>();
       controller.arrow_velocity = Quaternion.Euler(0, 0, angle) * (stringCoeff/weight*drawDistance*Vector3.right);
       controller.arrow_weight = weight;
