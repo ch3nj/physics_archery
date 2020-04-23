@@ -9,6 +9,7 @@ public class ShootArrow : MonoBehaviour
     private float timer = 0.0f;
     private float cooldown = 2.0f;
     private float stringCoeff = 0.2f;
+    public float weight = 0.1f;
     public float angle = 0.0f;
     public float drawDistance = 1.0f;
     public int arrowsLeft = 3;
@@ -19,6 +20,7 @@ public class ShootArrow : MonoBehaviour
       timer = cooldown;
       angle = 0.0f;
       drawDistance = 1.0f;
+      weight = 0.1f;
     }
 
     // Update is called once per frame
@@ -28,14 +30,16 @@ public class ShootArrow : MonoBehaviour
     }
 
     public void changeDraw(float newDraw) {
-      print(newDraw);
       drawDistance = newDraw;
     }
 
     public void changeAngle(float newAngle) {
-      print(newAngle);
       angle = newAngle;
       transform.rotation = Quaternion.LookRotation(Vector3.forward, Quaternion.Euler(0, 0, angle+90) * Vector3.right);
+    }
+
+    public void changeArrowWeight(float newWeight) {
+      weight = newWeight;
     }
 
     public void Shoot()
@@ -51,6 +55,7 @@ public class ShootArrow : MonoBehaviour
       GameObject shot = Instantiate(arrow, pos, Quaternion.identity);
       arrowsLeft -= 1;
       ArrowController controller = shot.GetComponent<ArrowController>();
-      controller.arrow_velocity = Quaternion.Euler(0, 0, angle) * (stringCoeff*drawDistance*Vector3.right);
+      controller.arrow_velocity = Quaternion.Euler(0, 0, angle) * (stringCoeff/weight*drawDistance*Vector3.right);
+      controller.arrow_weight = weight;
     }
 }
