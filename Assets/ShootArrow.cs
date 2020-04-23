@@ -13,7 +13,8 @@ public class ShootArrow : MonoBehaviour
     public float angle = 0.0f;
     public float drawDistance = 1.0f;
     public int arrowsLeft = 3;
-    public TMPro arrowsText;
+
+    public GameObject arrowsText;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +22,8 @@ public class ShootArrow : MonoBehaviour
       angle = 0.0f;
       drawDistance = 1.0f;
       weight = 0.1f;
+
+      arrowsText.GetComponent<TextMeshProUGUI>().text = arrowsLeft.ToString();
     }
 
     // Update is called once per frame
@@ -54,6 +57,7 @@ public class ShootArrow : MonoBehaviour
       Vector3 pos = transform.position;
       GameObject shot = Instantiate(arrow, pos, Quaternion.identity);
       arrowsLeft -= 1;
+      arrowsText.GetComponent<TextMeshProUGUI>().text = arrowsLeft.ToString();
       ArrowController controller = shot.GetComponent<ArrowController>();
       controller.arrow_velocity = Quaternion.Euler(0, 0, angle) * (stringCoeff/weight*drawDistance*Vector3.right);
       controller.arrow_weight = weight;
