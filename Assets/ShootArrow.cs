@@ -7,7 +7,7 @@ public class ShootArrow : MonoBehaviour
     public GameObject arrow;
     private float timer = 0.0f;
     private float cooldown = 2.0f;
-    private float stringCoeff = 0.05f;
+    private float stringCoeff = 0.2f;
     public float angle = 0.0f;
     public float drawDistance = 1.0f;
     // Start is called before the first frame update
@@ -47,6 +47,6 @@ public class ShootArrow : MonoBehaviour
       Vector3 pos = transform.position;
       GameObject shot = Instantiate(arrow, pos, Quaternion.identity);
       ArrowController controller = shot.GetComponent<ArrowController>();
-      controller.arrow_velocity = Quaternion.Euler(0, 0, angle) * (stringCoeff*drawDistance*drawDistance*Vector3.right);
+      controller.arrow_velocity = Quaternion.Euler(0, 0, angle) * (stringCoeff*drawDistance*Vector3.right);
     }
 }
