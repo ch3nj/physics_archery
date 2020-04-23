@@ -11,6 +11,7 @@ public class ShootArrow : MonoBehaviour
     public float weight = 0.1f;
     public float angle = 0.0f;
     public float drawDistance = 1.0f;
+    public int arrowsLeft = 3;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,7 +42,7 @@ public class ShootArrow : MonoBehaviour
 
     public void Shoot()
     {
-      if (timer < cooldown) {
+      if (timer < cooldown || arrowsLeft <= 0) {
         return;
       }
       timer = 0.0f;
@@ -50,6 +51,7 @@ public class ShootArrow : MonoBehaviour
       print("angle" + angle.ToString());
       Vector3 pos = transform.position;
       GameObject shot = Instantiate(arrow, pos, Quaternion.identity);
+      arrowsLeft -= 1;
       ArrowController controller = shot.GetComponent<ArrowController>();
       controller.arrow_velocity = Quaternion.Euler(0, 0, angle) * (stringCoeff/weight*drawDistance*Vector3.right);
       controller.arrow_weight = weight;
