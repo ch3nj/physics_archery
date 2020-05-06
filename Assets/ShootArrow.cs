@@ -8,10 +8,10 @@ public class ShootArrow : MonoBehaviour
     public GameObject arrow;
     private float timer = 0.0f;
     private float cooldown = 2.0f;
-    private float stringCoeff = 0.2f;
-    public float weight = 0.1f;
-    public float angle = 0.0f;
-    public float drawDistance = 1.0f;
+    private float stringCoeff = 0.8f;
+    public float weight;
+    public float angle;
+    public float drawDistance;
     public int arrowsLeft = 3;
 
     public GameObject arrowsText;
@@ -19,9 +19,7 @@ public class ShootArrow : MonoBehaviour
     void Start()
     {
       timer = cooldown;
-      angle = 0.0f;
-      drawDistance = 1.0f;
-      weight = 0.1f;
+      changeAngle(angle);
 
       arrowsText.GetComponent<TextMeshProUGUI>().text = "Arrows Left: " + arrowsLeft.ToString();
     }

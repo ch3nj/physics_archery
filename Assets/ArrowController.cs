@@ -27,12 +27,10 @@ public class ArrowController : MonoBehaviour
     }
 
     public void changeGravity(float newGravity) {
-      print("changing" + newGravity.ToString());
       gravity = newGravity;
     }
 
     public void changeAirResistance(float newAR) {
-      print("changing" + newAR.ToString());
       airResistance = newAR;
     }
 
@@ -45,7 +43,7 @@ public class ArrowController : MonoBehaviour
       transform.rotation = Quaternion.LookRotation(Vector3.forward, new Vector3(-arrow_velocity.y, arrow_velocity.x, 0));
       pos += arrow_velocity;
       transform.position = pos;
-      if (pos.x > MAX_X || pos.x < MIN_X || pos.y > MAX_Y || pos.y < MIN_Y) {
+      if (pos.x > MAX_X || pos.x < MIN_X || pos.y < MIN_Y) {
         Destroy(this.gameObject);
       }
 

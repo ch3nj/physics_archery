@@ -2,16 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TargetController : MonoBehaviour
+public class ObstacleController : MonoBehaviour
 {
-
-    public GameObject victory;
-    public Vector3 victoryPos = new Vector3(0,0,0);
-    public bool victoryNeeded = true;
     // Start is called before the first frame update
     void Start()
     {
-      print("target");
+
     }
 
     // Update is called once per frame
@@ -26,9 +22,6 @@ public class TargetController : MonoBehaviour
       if (collision.gameObject.GetComponent<ArrowController>()) {
         ArrowController controller = collision.gameObject.GetComponent<ArrowController>();
         controller.CancelInvoke();
-        if (victoryNeeded) {
-          Instantiate(victory, victoryPos, Quaternion.identity);
-        }
       }
     }
 }
