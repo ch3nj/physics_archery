@@ -38,8 +38,8 @@ public class ArrowController : MonoBehaviour
     {
       Vector3 pos = transform.position;
       arrow_velocity.y -= gravity*0.0001f;
-      arrow_velocity.x -= arrow_velocity.x*airResistance*0.0001f/arrow_weight;
-      arrow_velocity.y -= arrow_velocity.y*airResistance*0.0001f/arrow_weight;
+      arrow_velocity.x -= arrow_velocity.x*airResistance*0.01f/arrow_weight;
+      arrow_velocity.y -= arrow_velocity.y*airResistance*0.01f/arrow_weight;
       transform.rotation = Quaternion.LookRotation(Vector3.forward, new Vector3(-arrow_velocity.y, arrow_velocity.x, 0));
       pos += arrow_velocity;
       transform.position = pos;
